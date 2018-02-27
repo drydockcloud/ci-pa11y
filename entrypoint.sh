@@ -10,4 +10,4 @@ echo "#!/bin/bash -e" > /tmp/user-entrypoint.sh
 echo "PATH=${PATH}" >> /tmp/user-entrypoint.sh
 echo "$@" >> /tmp/user-entrypoint.sh
 chmod a+x /tmp/user-entrypoint.sh
-su -c"/tmp/user-entrypoint.sh" node
+dumb-init -- su -c"/tmp/user-entrypoint.sh" node
