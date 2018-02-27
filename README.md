@@ -12,7 +12,7 @@ Create a directory ("pa11y" in example below) with your config.json Pa11y config
 
 You can use the Docker Hub image (`civicactions/docker-pa11y`) to run the Pa11y CLI:
 ```
-docker run -it --rm -v $(pwd)/pa11y:/home/node/app civicactions/pa11y pa11y
+docker run -it --rm -v $(pwd)/pa11y:/home/node/app civicactions/docker-pa11y pa11y
 ```
 
 The mount into the /home/node/app directory (the default working directory in the container) will contain your test config.
@@ -21,12 +21,12 @@ A custom entrypoint will transparently run each command as a user with the UID/G
 
 To run the Pa11y CI tool:
 ```
-docker run -it --rm -v $(pwd)/pa11y:/home/node/app civicactions/pa11y pa11y-ci
+docker run -it --rm -v $(pwd)/pa11y:/home/node/app civicactions/docker-pa11y pa11y-ci
 ```
 
 To lint your pa11y config, follow the directions on https://github.com/pa11y/pa11y-lint-config then run eslint:
 ```
-docker run -it --rm -v $(pwd)/pa11y:/home/node/app civicactions/pa11y eslint
+docker run -it --rm -v $(pwd)/pa11y:/home/node/app civicactions/docker-pa11y eslint
 ```
 
 ## Building the image
@@ -36,4 +36,4 @@ To build this image from scratch clone this repository then run:
 docker build -t pa11y .
 ```
 
-You can use this image in the examples above by replacing `civicactions/pa11y` with `pa11y`.
+You can use this image in the examples above by replacing `civicactions/docker-pa11y` with `pa11y`.
