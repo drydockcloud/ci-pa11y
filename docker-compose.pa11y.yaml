@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  pa11y:
+    image: drydockcloud/ca-pa11y:latest
+    command: autotest
+    volumes:
+      - ./tests/pa11y:/src
+      - ./results/pa11y:/results
+    depends_on:
+      - web

@@ -1,13 +1,22 @@
-#!/bin/bash -e
+#!/bin/bash
+set -e
 
-# To avoid file permission conflicts change the "node" user to the UID of
-# the owner of the working directory and run the command as the "node" user.
-usermod -o -u $(stat -c '%u' .) -s /bin/bash -d /home/node/app node
+args=( "$@" )
 
-# To ensure the node path is maintained and quoting arbitrary strings,
-# run the user command via a temporary script.
-echo "#!/bin/bash -e" > /tmp/user-entrypoint.sh
-echo "PATH=${PATH}" >> /tmp/user-entrypoint.sh
-echo "$@" >> /tmp/user-entrypoint.sh
-chmod a+x /tmp/user-entrypoint.sh
-dumb-init -- su -c"/tmp/user-entrypoint.sh" node
+if [ "${TARGET}" != "" ]; then
+  export PA11Y_baseUrl="${TARGET}"
+fi
+
+# If the first argument is pa11y, then remove it.
+if [ "${args[0]}" == "pa11y" ]; then
+  args=( "${args[@]:1}" )
+fi
+
+# Run if Drydock "autotest" command is provided.
+if [ "${args[0]}" == "autotest" ]; then
+  args[0]="run"
+fi
+
+# Re-execute with provided args
+exec pa11y "${args[@]}"
+
