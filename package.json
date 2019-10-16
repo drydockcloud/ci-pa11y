@@ -2,6 +2,7 @@
   "name": "ca-pa11y",
   "version": "1.0.0",
   "description": "CI implementation of pa11y for a docker image.",
+  "main": "pa11y.js",
   "dependencies": {
     "eslint": "^4.18.1",
     "pa11y": "^5.0.1",
