@@ -20,5 +20,5 @@ fi
 # Re-execute with provided args
 exec pa11y-ci "${args[@]}"
 
-# Run pa11y tests
-exec pa11y-ci "${PA11Y_baseUrl}"
+## Run pa11y tests
+#exec pa11y-ci "${PA11Y_baseUrl}"

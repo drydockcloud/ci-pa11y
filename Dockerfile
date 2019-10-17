@@ -32,10 +32,9 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 RUN yarn install --silent --production --non-interactive && \
     yarn cache clean --force
 COPY entrypoint.sh ./
-COPY .pa11yci ./
 ENV PATH="/home/node/node_modules/.bin:${PATH}"
-WORKDIR /home/node/app
 
+COPY .pa11yci /home/node/app/
 
 # Switch back to root so our entrypoint can adjust the running UID/GID.
 USER root
