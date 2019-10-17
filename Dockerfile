@@ -34,7 +34,7 @@ RUN yarn install --silent --production --non-interactive && \
 COPY entrypoint.sh ./
 ENV PATH="/home/node/node_modules/.bin:${PATH}"
 WORKDIR /home/node/app
-ADD .pa11yci ./
+COPY .pa11yci .pa11yci
 
 # Switch back to root so our entrypoint can adjust the running UID/GID.
 USER root
