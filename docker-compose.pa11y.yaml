@@ -5,7 +5,6 @@ services:
     image: drydockcloud/ca-pa11y:latest
     command: autotest
     volumes:
-      - ./tests/pa11y:/src
-      - ./results/pa11y:/results
+      - ./tests/pa11y:/home/node/app
     depends_on:
       - web
