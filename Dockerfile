@@ -27,7 +27,7 @@ RUN chmod +x /usr/local/bin/dumb-init
 # Switch to node user to install packages, so ownership is correct.
 USER node
 WORKDIR /home/node
-COPY package.json yarn.lock .pa11yci ./
+COPY package.json yarn.lock ./
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 RUN yarn install --silent --production --non-interactive && \
     yarn cache clean --force
