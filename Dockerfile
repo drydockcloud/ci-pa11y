@@ -1,6 +1,12 @@
 FROM node:9.6
 MAINTAINER Owen Barton <owen.barton@civicactions.com>
 
+# Drydock environment setup
+LABEL exposed.command.single=pa11y-ci
+ENV TARGET=http://web
+VOLUME ["/src"]
+WORKDIR /src
+
 # From https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md#running-puppeteer-in-docker
 # See https://crbug.com/795759
 RUN apt-get update && apt-get install -yq libgconf-2-4
@@ -29,8 +35,10 @@ RUN yarn install --silent --production --non-interactive && \
     yarn cache clean --force
 COPY entrypoint.sh ./
 ENV PATH="/home/node/node_modules/.bin:${PATH}"
-WORKDIR /home/node/app
+
+COPY .pa11yci /src/
 
 # Switch back to root so our entrypoint can adjust the running UID/GID.
 USER root
 ENTRYPOINT ["/home/node/entrypoint.sh"]
+

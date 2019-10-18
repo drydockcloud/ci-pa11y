@@ -1,4 +1,7 @@
 {
+  "name": "ca-pa11y",
+  "version": "1.0.0",
+  "description": "CI implementation of pa11y for a docker image.",
   "dependencies": {
     "eslint": "^4.18.1",
     "pa11y": "^5.0.1",
@@ -7,5 +10,6 @@
     "pa11y-reporter-html": "^1.0.0",
     "pa11y-reporter-json": "^1.0.0",
     "pa11y-reporter-tsv": "^1.0.0"
-  }
+  },
+  "license": "ISC"
 }
