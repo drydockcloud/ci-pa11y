@@ -1,7 +1,6 @@
 version: "3"
 
 # Base image test, used by Docker Hub.
-# @TODO does this need to be enabled for this image on the docker hub side?
 services:
   web:
     image: drydockcloud/tools-ci-web:latest
